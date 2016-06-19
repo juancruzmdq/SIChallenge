@@ -26,7 +26,7 @@ class NetworkEngine {
     // MARK: Private Properties
 
     var baseURL:NSURL?
-    let session = NSURLSession.sharedSession()
+    lazy var session:NSURLSession = { NSURLSession.sharedSession() }()
 
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: Public Properties
@@ -62,17 +62,19 @@ class NetworkEngine {
             }
         }
         
-        let components:NSURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
-        components.queryItems = qItems
-        
-        return components.URL
+        if let components:NSURLComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false) {
+            components.queryItems = qItems
+            return components.URL
+        }else{
+            return nil
+        }
         
     }
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: public Methods
     
     /**
-     Make a GET HTTP request to the specified path in the baseURL host. This call spect a JSON in the response body
+     Make a GET HTTP request to the specified path in the baseURL host. The parameter type spect the type of the response body
      
      - parameter type:         ResponseType value
      - parameter path:         Path to the endpoint inside the baseURL
@@ -82,6 +84,14 @@ class NetworkEngine {
         self.GET(type, path:path, params: nil, onCompletion: onCompletion)
     }
     
+    /**
+     Make a GET HTTP request to the specified path in the baseURL host. The parameter type spect the type of the response body
+     
+     - parameter type:         ResponseType value
+     - parameter path:         Path to the endpoint inside the baseURL
+     - parameter params:       Dictionary with a set of parameters for the call
+     - parameter onCompletion: Block to be executed after finish the request. send the json response as a dictionary, and the posible error
+     */
     func GET(type:ResponseType, path: String, params:[String:AnyObject]?, onCompletion: (AnyObject?, NSError?) -> Void) {
         
         guard var endpointURL = baseURL?.URLByAppendingPathComponent(path) else {
@@ -90,7 +100,9 @@ class NetworkEngine {
         }
         
         if params != nil {
-            endpointURL = self.createUrlAddingQuery(endpointURL, params: params!)!
+            if let url =  self.createUrlAddingQuery(endpointURL, params: params!){
+                endpointURL = url
+            }
         }
         
         let task = self.session.dataTaskWithURL(endpointURL, completionHandler: {data, response, error -> Void in

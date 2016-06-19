@@ -37,8 +37,6 @@ class PlayerCell:UICollectionViewCell {
         didSet {
             if teamColor != nil {
                 self.backgroundColor = UIColor(hexString: teamColor!)
-            }else{
-                self.backgroundColor = UIColor(hexString: "008800")
             }
         }
     }
@@ -60,6 +58,11 @@ class PlayerCell:UICollectionViewCell {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: Setup & Teardown
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.teamColor = "008800"
+    }
+    
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: Class Methods
 
@@ -78,7 +81,7 @@ class PlayerCell:UICollectionViewCell {
         if let person = self.player!.person  {
             if let urlStr = person.imageUrl  {
                 
-                self.imageTask = self.imageManager.getAvatarFrom(NSURL(string:urlStr)!,
+                self.imageTask = self.imageManager.imageFrom(NSURL(string:urlStr)!,
                                                                  transform:AvatarTransform(size: (self.personAvatar?.frame.size)!),
                                                                  onComplete: { (chache, image, error) in
                                                                     

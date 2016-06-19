@@ -44,16 +44,5 @@ class Player {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: public Methods
     
-    func hidrate(fromDict:NSDictionary) -> Player {
-        if let id = fromDict["Id"] as? Int {
-            self.id = id
-        }
-        if let jerseyNumber = fromDict["JerseyNumber"] as? String {
-            self.jerseyNumber = jerseyNumber
-        }
-        if let person = fromDict["Person"] as? NSDictionary {
-            self.person = Person().hidrate(person)
-        }
-        return self
-    }
+
 }

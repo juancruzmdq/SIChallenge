@@ -23,7 +23,7 @@ protocol ImageTransform {
 }
 
 /**
- *  Class in charge of handle Image transformation and Image cache for the proyect SIChallenge
+ *  Class in charge of handle Image Download and Image cache
  */
 class ImageManager {
 
@@ -77,7 +77,7 @@ class ImageManager {
      
      - returns: Download task reference
      */
-    func getAvatarFrom(url:NSURL, transform:ImageTransform?, onComplete:((CacheType,UIImage?,NSError?) -> Void)?) -> NSURLSessionDataTask? {
+    func imageFrom(url:NSURL, transform:ImageTransform?, onComplete:((CacheType,UIImage?,NSError?) -> Void)?) -> NSURLSessionDataTask? {
 
         var task:NSURLSessionDataTask? = nil
         if self.cache.objectForKey(url.absoluteString) != nil {

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-/** hex Extends UIColor
+/** Hex Extends UIColor
 
 */
 extension UIColor {

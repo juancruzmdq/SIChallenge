@@ -33,7 +33,9 @@ class ISApi {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: Private Properties
     
-    let engine:NetworkEngine = NetworkEngine(url:NSURL(fileURLWithPath: "http://iscoresports.com/"))
+    lazy var engine:NetworkEngine = { NetworkEngine(url:NSURL(fileURLWithPath: "http://iscoresports.com/")) }()
+
+    lazy var mapper:Mapper = { Mapper() }()
 
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: Public Properties
@@ -67,7 +69,7 @@ class ISApi {
             }else{
                 var team:Team? = nil
                 if dict != nil {
-                    team = Team().hidrate(dict! as! NSDictionary)
+                    team = self.mapper.buildTeam((dict! as! NSDictionary))
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     onCompletion(team,error)

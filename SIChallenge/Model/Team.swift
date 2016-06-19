@@ -45,24 +45,5 @@ class Team {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: public Methods
     
-    func hidrate(fromDict:NSDictionary) -> Team {
-        
-        if let id = fromDict["Id"] as? Int {
-            self.id = id
-        }
-        if let name = fromDict["Name"] as? String {
-            self.name = name
-        }
-        if let settings = fromDict["Settings"] as? NSDictionary {
-            self.settings = Setting()
-            self.settings?.hidrate(settings)
-        }
-        if let players = fromDict["Players"] as? [NSDictionary] {
-            self.players.removeAll()
-            for playerDic in players {
-                self.players.insert(Player().hidrate(playerDic), atIndex: self.players.count)
-            }
-        }
-        return self
-    }
+
 }

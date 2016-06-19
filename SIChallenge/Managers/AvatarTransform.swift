@@ -17,6 +17,7 @@ import UIKit
 
 /**
  *  AvatarTransform
+ *  Crop the bottom of the image leaving the left side shorter than the right side
  */
 class AvatarTransform:ImageTransform {
 

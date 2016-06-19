@@ -44,16 +44,5 @@ class Person {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: public Methods
     
-    func hidrate(fromDict:NSDictionary) -> Person {
-        if let firstName = fromDict["FirstName"] as? String {
-            self.firstName = firstName
-        }
-        if let lastName = fromDict["LastName"] as? String {
-            self.lastName = lastName
-        }
-        if let imageUrl = fromDict["ImageUrl"] as? String {
-            self.imageUrl = imageUrl
-        }
-        return self
-    }
+
 }

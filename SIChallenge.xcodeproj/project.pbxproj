@@ -19,13 +19,12 @@
 		EE47412B1D1243C7001DFE0C /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47412A1D1243C7001DFE0C /* Setting.swift */; };
 		EE47412D1D125272001DFE0C /* NSError+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47412C1D125272001DFE0C /* NSError+Custom.swift */; };
 		EE4741331D130CF1001DFE0C /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4741321D130CF1001DFE0C /* PlayerCell.swift */; };
-		EE4741371D134C61001DFE0C /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4741361D134C61001DFE0C /* UIColor+hex.swift */; };
+		EE4741371D134C61001DFE0C /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4741361D134C61001DFE0C /* UIColor+Hex.swift */; };
 		EE47413E1D136D6E001DFE0C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47413D1D136D6E001DFE0C /* ImageManager.swift */; };
 		EE4741401D147236001DFE0C /* UIImage+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47413F1D147236001DFE0C /* UIImage+Scaled.swift */; };
 		EE4741421D156F98001DFE0C /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4741411D156F98001DFE0C /* Mapper.swift */; };
 		EE4741441D163BA6001DFE0C /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4741431D163BA6001DFE0C /* NetworkEngine.swift */; };
 		EE4741481D164218001DFE0C /* AvatarTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4741471D164218001DFE0C /* AvatarTransform.swift */; };
-		EE47414A1D1644BB001DFE0C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EE4741491D1644BB001DFE0C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +42,7 @@
 		EE47412A1D1243C7001DFE0C /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		EE47412C1D125272001DFE0C /* NSError+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Custom.swift"; sourceTree = "<group>"; };
 		EE4741321D130CF1001DFE0C /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
-		EE4741361D134C61001DFE0C /* UIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		EE4741361D134C61001DFE0C /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		EE47413D1D136D6E001DFE0C /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		EE47413F1D147236001DFE0C /* UIImage+Scaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaled.swift"; sourceTree = "<group>"; };
 		EE4741411D156F98001DFE0C /* Mapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
@@ -139,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				EE47412C1D125272001DFE0C /* NSError+Custom.swift */,
-				EE4741361D134C61001DFE0C /* UIColor+hex.swift */,
+				EE4741361D134C61001DFE0C /* UIColor+Hex.swift */,
 				EE47413F1D147236001DFE0C /* UIImage+Scaled.swift */,
 			);
 			path = Extensions;
@@ -231,14 +230,13 @@
 				EE4741421D156F98001DFE0C /* Mapper.swift in Sources */,
 				EE4741201D1229C0001DFE0C /* Player.swift in Sources */,
 				EE4741221D122A49001DFE0C /* ISApi.swift in Sources */,
-				EE47414A1D1644BB001DFE0C /* README.md in Sources */,
 				EE4741331D130CF1001DFE0C /* PlayerCell.swift in Sources */,
 				EE47411E1D122971001DFE0C /* Team.swift in Sources */,
 				EE4741441D163BA6001DFE0C /* NetworkEngine.swift in Sources */,
 				EE4741291D1243B4001DFE0C /* Person.swift in Sources */,
 				EE47413E1D136D6E001DFE0C /* ImageManager.swift in Sources */,
 				EE4741191D1218FD001DFE0C /* TeamViewController.swift in Sources */,
-				EE4741371D134C61001DFE0C /* UIColor+hex.swift in Sources */,
+				EE4741371D134C61001DFE0C /* UIColor+Hex.swift in Sources */,
 				EE47412B1D1243C7001DFE0C /* Setting.swift in Sources */,
 				EE4740FD1D120EED001DFE0C /* AppDelegate.swift in Sources */,
 			);

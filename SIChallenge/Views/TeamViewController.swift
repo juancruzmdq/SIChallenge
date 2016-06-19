@@ -168,7 +168,7 @@ class TeamViewController:UIViewController, UICollectionViewDataSource, UICollect
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         
-        // Get the ceel's width necesary to display 3 cells per row and leave a 5px margin betwen the cells
+        // Get the cell's width necessary to display 3 cells per row and leave a 5px margin between the cells
         let w = ((self.collectionView?.frame.size.width)! - 10) / 3
         
         // Return final cell size, having in mind the aspect ratio of the cell

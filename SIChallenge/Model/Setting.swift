@@ -42,10 +42,4 @@ class Setting {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: public Methods
     
-    func hidrate(fromDict:NSDictionary) -> Setting {
-        if let highlightColor = fromDict["HighlightColor"] as? String {
-            self.highlightColor = highlightColor
-        }
-        return self
-    }
 }
