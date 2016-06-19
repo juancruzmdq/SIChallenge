@@ -25,7 +25,7 @@ class Team {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: Public Properties
     
-    var id : String?
+    var id : Int?
     var name : String?
     var settings : Setting?
     var players : [Player] = []
@@ -47,7 +47,7 @@ class Team {
     
     func hidrate(fromDict:NSDictionary) -> Team {
         
-        if let id = fromDict["Id"] as? String {
+        if let id = fromDict["Id"] as? Int {
             self.id = id
         }
         if let name = fromDict["Name"] as? String {

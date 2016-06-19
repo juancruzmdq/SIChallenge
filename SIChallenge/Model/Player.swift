@@ -25,7 +25,7 @@ class Player {
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: Public Properties
     
-    var id : String?
+    var id : Int?
     var jerseyNumber : String?
     var person : Person?
     
@@ -45,7 +45,7 @@ class Player {
     // MARK: public Methods
     
     func hidrate(fromDict:NSDictionary) -> Player {
-        if let id = fromDict["Id"] as? String {
+        if let id = fromDict["Id"] as? Int {
             self.id = id
         }
         if let jerseyNumber = fromDict["JerseyNumber"] as? String {

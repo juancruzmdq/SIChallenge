@@ -59,7 +59,7 @@ class ISApi {
      - parameter onCompletion: block with the Team Object, or an error instance
      */
     func getTeam(onCompletion: (Team?, NSError?) -> Void) {
-        engine.GET("bcl/challenge/team.json", onCompletion: { dict, error in
+        engine.GET(.JSON,path:"bcl/challenge/team.json", onCompletion: { dict, error in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), {
                     onCompletion(nil, error)
@@ -67,7 +67,7 @@ class ISApi {
             }else{
                 var team:Team? = nil
                 if dict != nil {
-                    team = Team().hidrate(dict!)
+                    team = Team().hidrate(dict! as! NSDictionary)
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     onCompletion(team,error)
@@ -76,6 +76,42 @@ class ISApi {
         })
     }
     
+    
+    func tapped(teamid:Int?, playerid:Int?, playerFirstName:String?, playerLastName:String?, onCompletion: (NSError?) -> Void) {
+        var params:[String:AnyObject] = [:]
+        if teamid != nil {
+            params["teamid"] = teamid!
+        }
+        if playerid != nil {
+            params["playerid"] = playerid!
+        }
+        if playerFirstName != nil {
+            params["playerFirstName"] = playerFirstName!
+        }
+        if playerLastName != nil {
+            params["playerLastName"] = playerLastName!
+        }
+        
+        engine.GET(.HTML,path:"bcl/challenge/tapped.php", params:params, onCompletion: { string, error in
+            dispatch_async(dispatch_get_main_queue(), {
+                if error != nil{
+                    onCompletion(error)
+                }else{
+                    if let str = string as? String  {
+                        if str == "OK" {
+                            onCompletion(nil)
+                        }else{
+                            onCompletion(NSError(domain: String(reflecting: self.dynamicType), code: 1, Description: str))
+                        }
+                    }else{
+                        onCompletion(NSError(domain: String(reflecting: self.dynamicType), code: 1, Description:  "Undefined Error" ))
+                    }
+                }
+            })
+
+        })
+
+    }
     
     
 }

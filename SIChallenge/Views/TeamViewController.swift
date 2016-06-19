@@ -147,6 +147,22 @@ class TeamViewController:UIViewController, UICollectionViewDataSource, UICollect
     }
     
     ////////////////////////////////////////////////////////////////////////////////
+    // MARK: UICollectionViewDelegate
+    internal func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        if let player:Player = self.team?.players[indexPath.row]{
+            self.api.tapped(self.team?.id,
+                            playerid: player.id,
+                            playerFirstName: player.person?.firstName,
+                            playerLastName: player.person?.lastName,
+                            onCompletion: { (error) in
+                if error != nil {
+                    self.presentError(error!)
+                }
+            })
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////
     // MARK: UICollectionViewDelegateFlowLayout
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
