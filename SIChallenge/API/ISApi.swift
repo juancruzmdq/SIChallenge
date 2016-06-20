@@ -56,7 +56,7 @@ class ISApi {
     // MARK: public Methods
     
     /**
-     MAke a call to get a Team profile
+     Make a call to get a Team profile
      
      - parameter onCompletion: block with the Team Object, or an error instance
      */
