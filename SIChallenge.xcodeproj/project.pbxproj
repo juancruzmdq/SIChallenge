@@ -48,7 +48,7 @@
 		EE4741411D156F98001DFE0C /* Mapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		EE4741431D163BA6001DFE0C /* NetworkEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
 		EE4741471D164218001DFE0C /* AvatarTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarTransform.swift; sourceTree = "<group>"; };
-		EE4741491D1644BB001DFE0C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EE47414B1D177853001DFE0C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 				EE4740FC1D120EED001DFE0C /* AppDelegate.swift */,
 				EE4741031D120EED001DFE0C /* Assets.xcassets */,
 				EE4741081D120EED001DFE0C /* Info.plist */,
-				EE4741491D1644BB001DFE0C /* README.md */,
+				EE47414B1D177853001DFE0C /* README.md */,
 			);
 			path = SIChallenge;
 			sourceTree = "<group>";
