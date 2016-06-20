@@ -13,6 +13,8 @@ import Foundation
 ////////////////////////////////////////////////////////////////////////////////
 // MARK: Types
 
+typealias onRequestCompleteHandler = (AnyObject?, NSError?) -> Void
+
 enum ResponseType {
     case HTML
     case JSON
@@ -74,13 +76,9 @@ class NetworkEngine {
     // MARK: public Methods
     
     /**
-     Make a GET HTTP request to the specified path in the baseURL host. The parameter type spect the type of the response body
-     
-     - parameter type:         ResponseType value
-     - parameter path:         Path to the endpoint inside the baseURL
-     - parameter onCompletion: Block to be executed after finish the request. send the json response as a dictionary, and the posible error
+     Convenience method to call GET without parameters
      */
-    func GET(type:ResponseType, path: String, onCompletion: (AnyObject?, NSError?) -> Void) {
+    func GET(type:ResponseType, path: String, onCompletion: onRequestCompleteHandler) {
         self.GET(type, path:path, params: nil, onCompletion: onCompletion)
     }
     
@@ -92,7 +90,7 @@ class NetworkEngine {
      - parameter params:       Dictionary with a set of parameters for the call
      - parameter onCompletion: Block to be executed after finish the request. send the json response as a dictionary, and the posible error
      */
-    func GET(type:ResponseType, path: String, params:[String:AnyObject]?, onCompletion: (AnyObject?, NSError?) -> Void) {
+    func GET(type:ResponseType, path: String, params:[String:AnyObject]?, onCompletion: onRequestCompleteHandler) {
         
         guard var endpointURL = baseURL?.URLByAppendingPathComponent(path) else {
             onCompletion(nil, NSError(domain: String(reflecting: self.dynamicType), code: 404, Description: "Invalid URL"))
