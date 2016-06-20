@@ -15,7 +15,7 @@ import Foundation
 
 
 /**
- *  Mapper
+ *  Mapper: This mapper class only have some fixed methods to build the objects related to this project. The best solution could be build a ORM that dinamically parse the dictionary to objects of the model. but this is a overwork for this challenge
  */
 class Mapper {
 

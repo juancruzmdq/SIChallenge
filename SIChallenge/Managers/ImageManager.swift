@@ -14,13 +14,24 @@ import UIKit
 ////////////////////////////////////////////////////////////////////////////////
 // MARK: Types
 
-typealias onImageCompleteHandler = (CacheType,UIImage?,NSError?) -> Void
+/// signature used by the block that notify the uiimage recover
+typealias onImageCompleteHandler = (ImageSourceType,UIImage?,NSError?) -> Void
 
-public enum CacheType {
-    case None
+
+/**
+ Enumeration used to identify the source of the image
+ 
+ - Remote:  Downloaded from remote server
+ - Cache: stored in local cache
+ */
+public enum ImageSourceType {
+    case Remote
     case Cache
 }
 
+/**
+ *  Protocol to be implementer by the class that will be in charge of transform the source image before cache it
+ */
 protocol ImageTransform {
     func formated(origin:UIImage) -> UIImage
 }
@@ -102,7 +113,7 @@ class ImageManager {
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     if onComplete != nil {
-                        onComplete!(.None,image,error)
+                        onComplete!(.Remote,image,error)
                     }
                 })
                 }

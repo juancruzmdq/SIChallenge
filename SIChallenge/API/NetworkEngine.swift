@@ -13,12 +13,20 @@ import Foundation
 ////////////////////////////////////////////////////////////////////////////////
 // MARK: Types
 
+/// signature used by the block that notify the end of the request
 typealias onRequestCompleteHandler = (AnyObject?, NSError?) -> Void
 
+/**
+ Enumeration used to indicate the result kind of a request
+ 
+ - HTML: Plain HTML text
+ - JSON: JSON dictionary
+ */
 enum ResponseType {
     case HTML
     case JSON
 }
+
 /**
  *  NetworkEngine
  */

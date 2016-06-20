@@ -15,7 +15,7 @@ import Foundation
 
 
 /**
- *  ISApi
+ *  ISApi: Class to proxy the remote IS API
  */
 class ISApi {
 

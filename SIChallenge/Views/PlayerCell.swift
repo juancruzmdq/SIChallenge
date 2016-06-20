@@ -83,15 +83,15 @@ class PlayerCell:UICollectionViewCell {
                 
                 self.imageTask = self.imageManager.imageFrom(NSURL(string:urlStr)!,
                                                                  transform:AvatarTransform(size: (self.personAvatar?.frame.size)!),
-                                                                 onComplete: { (chache, image, error) in
+                                                                 onComplete: { [weak self] (chache, image, error) in
                                                                     
-                                                                    if image != nil {
+                                                                    if self != nil && image != nil {
                                                                         
-                                                                        UIView.transitionWithView(self,
+                                                                        UIView.transitionWithView(self!,
                                                                             duration: chache == .Cache ? 0 : 0.3,
                                                                             options: .TransitionCrossDissolve,
                                                                             animations: {
-                                                                                self.personAvatar?.image = image
+                                                                                self?.personAvatar?.image = image
                                                                             },
                                                                             completion: nil)
                                                                         
