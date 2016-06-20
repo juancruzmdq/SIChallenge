@@ -13,6 +13,9 @@ import UIKit
 
 ////////////////////////////////////////////////////////////////////////////////
 // MARK: Types
+
+typealias onImageCompleteHandler = (CacheType,UIImage?,NSError?) -> Void
+
 public enum CacheType {
     case None
     case Cache
@@ -77,11 +80,13 @@ class ImageManager {
      
      - returns: Download task reference
      */
-    func imageFrom(url:NSURL, transform:ImageTransform?, onComplete:((CacheType,UIImage?,NSError?) -> Void)?) -> NSURLSessionDataTask? {
+    func imageFrom(url:NSURL, transform:ImageTransform?, onComplete:onImageCompleteHandler? ) -> NSURLSessionDataTask? {
 
         var task:NSURLSessionDataTask? = nil
         if self.cache.objectForKey(url.absoluteString) != nil {
-            onComplete!(.Cache, self.cache.objectForKey(url.absoluteString) as? UIImage, nil)
+            if onComplete != nil {
+                onComplete!(.Cache, self.cache.objectForKey(url.absoluteString) as? UIImage, nil)
+            }
         }else{
             
             task = NSURLSession.sharedSession().dataTaskWithURL(url){[weak self] (data, response, error) in
@@ -96,7 +101,9 @@ class ImageManager {
                     }
                 }
                 dispatch_async(dispatch_get_main_queue(), {
-                    onComplete!(.None,image,error)
+                    if onComplete != nil {
+                        onComplete!(.None,image,error)
+                    }
                 })
                 }
             task?.resume()
