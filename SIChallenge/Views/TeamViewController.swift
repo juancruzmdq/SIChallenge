@@ -113,8 +113,11 @@ class TeamViewController:UIViewController, UICollectionViewDataSource, UICollect
         self.collectionView?.reloadData()
     }
 
+    ////////////////////////////////////////////////////////////////////////////////
+    // MARK: Alert Methods
+    
     private func presentError(error:NSError){
-        let alertController = UIAlertController(title: "SIError",
+        let alertController = UIAlertController(title: "SI Error",
                                                 message: error.localizedDescription,
                                                 preferredStyle: .Alert)
         
@@ -126,7 +129,38 @@ class TeamViewController:UIViewController, UICollectionViewDataSource, UICollect
         
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-
+    
+    private func presentInfo(info:String){
+        let alertController = UIAlertController(title: "SI Info",
+                                                message: info,
+                                                preferredStyle: .Alert)
+        
+        let actionOk = UIAlertAction(title: "OK",
+                                     style: .Default,
+                                     handler: nil)
+        
+        alertController.addAction(actionOk)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
+    /**
+     This is just a simple and ugly alert :),  added to display some feedback to the user.
+     */
+    private func pendingAlert(title:String) -> UIAlertController {
+        let pending = UIAlertController(title: title+"\n\n", message: nil, preferredStyle: .Alert)
+        
+        let indicator = UIActivityIndicatorView(frame: pending.view.bounds)
+        indicator.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        indicator.activityIndicatorViewStyle = .Gray
+        pending.view.addSubview(indicator)
+        indicator.userInteractionEnabled = false
+        indicator.startAnimating()
+        
+        return pending
+    }
+    
     ////////////////////////////////////////////////////////////////////////////////
     // MARK: public Methods
 
@@ -150,14 +184,24 @@ class TeamViewController:UIViewController, UICollectionViewDataSource, UICollect
     // MARK: UICollectionViewDelegate
     internal func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         if let player:Player = self.team?.players[indexPath.row]{
+            
+            let pendingAlert = self.pendingAlert("Tapping Player")
+            self.presentViewController(pendingAlert, animated: true, completion: nil)
+
             self.api.tapped(self.team?.id,
                             playerid: player.id,
                             playerFirstName: player.person?.firstName,
                             playerLastName: player.person?.lastName,
                             onCompletion: { (error) in
-                if error != nil {
-                    self.presentError(error!)
-                }
+                                
+                                pendingAlert.dismissViewControllerAnimated(true, completion: { 
+                                    if error != nil {
+                                        self.presentError(error!)
+                                    }else{
+                                        self.presentInfo("User tapped successfully")
+                                    }
+                                })
+                                
             })
         }
     }
